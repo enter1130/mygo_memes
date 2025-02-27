@@ -1,6 +1,5 @@
 import { Col, Image, Row } from 'antd';
 import { useEffect, useState } from 'react';
-import useInfiniteScroll from "../useInfiniteScroll"; // 引入原生 Hook
 
 function App() {
   const [memes, setMemes] = useState([])
@@ -17,11 +16,9 @@ function App() {
     .then(res=>res.json())
     .then(data=>{
       setMemes(data.urls)
-      if (data.length > 50) setHasMore(false);
     })
   }
 
-  const observerRef = useInfiniteScroll(loadMoreImages, hasMore);
 
   useEffect(()=>{
     getMemes()

@@ -1,4 +1,5 @@
-import { Col, Image, Layout, Row } from 'antd';
+import { UpCircleFilled } from '@ant-design/icons';
+import { Col, FloatButton, Image, Layout, Row } from 'antd';
 import { useEffect, useState } from 'react';
 import Loading from './Loading';
 import MenuComponent from './MenuComponent';
@@ -30,7 +31,7 @@ function Home() {
 
   return (
     <Layout>
-      <Header style={{backgroundColor:'rgb(55, 55, 55)',margin:0,padding:0}}>
+      <Header id='top' style={{backgroundColor:'rgb(55, 55, 55)',margin:0,padding:0}}>
         <MenuComponent />
       </Header>
       <Content style={{backgroundColor:'rgb(55, 55, 55)'}}>
@@ -41,6 +42,12 @@ function Home() {
           </Col>
         )):<Loading />}
       </Row>
+      <FloatButton
+        href='#top'
+        type={'default'}
+        style={{ insetInlineEnd: 24 }}
+        icon={<UpCircleFilled />}
+      />
       </Content>
     </Layout>
   )

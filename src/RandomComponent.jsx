@@ -1,4 +1,4 @@
-import { Image, Layout } from 'antd';
+import { Col, Image, Layout, Row } from 'antd';
 import { useEffect, useState } from 'react';
 import Loading from './Loading';
 import MenuComponent from './MenuComponent';
@@ -32,9 +32,11 @@ function RandomComponent() {
         <MenuComponent />
       </Header>
       <Content style={{backgroundColor:'rgb(55, 55, 55)'}}>
-        <div className="image-container" style={{maxHeight:'600px'}}>
-        {memes?<Image style={{height:'100%',width:'auto'}} alt={memes.alt} src={memes.url} />:<Loading />}
-        </div>
+        <Row>
+          <Col xs={24} md={24}>
+          {memes?<Image style={{height:'100%',width:'auto'}} alt={memes.alt} src={memes.url} />:<Loading />}
+          </Col>
+        </Row>
       </Content>
     </Layout>
   )

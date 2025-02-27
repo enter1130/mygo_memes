@@ -13,19 +13,4 @@ a{
 #main{
   width: 100%;
   min-height: 100vh;
-
-}
-
-.image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.image-container img {
-  max-height: 600px; /* 限制最大高度 */
-  max-width: 100%; /* 讓圖片可以根據視窗縮小 */
-  height: auto; /* 保持等比例縮放 */
-  width: auto; /* 保持等比例縮放 */
-  display: block;
 }

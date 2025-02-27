@@ -1,10 +1,8 @@
-import { LoadingOutlined } from '@ant-design/icons';
-import { Spin } from 'antd';
 
 function Loading() {
     return (
-        <div className='d-flex align-items-center justify-content-center'>
-            <Spin indicator={<LoadingOutlined style={{fontSize: 100,}} spin />}/>
+        <div className="image-container">
+            <img src="https://drive.miyago9267.com/d/file/img/mygo/每次想著想著就會感到很厭世.jpg" />
         </div>
     )
 }

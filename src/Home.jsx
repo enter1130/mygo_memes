@@ -7,7 +7,6 @@ const { Header, Footer, Sider, Content } = Layout;
 
 function Home() {
   const [memes, setMemes] = useState([])
-  const [picture,setPicture] = useState(null)
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
@@ -29,7 +28,6 @@ function Home() {
   },[])
 
 
-  if(!memes.length) return(<Loading />)
   return (
     <Layout>
       <Header style={{backgroundColor:'rgb(55, 55, 55)',margin:0,padding:0}}>
@@ -37,11 +35,11 @@ function Home() {
       </Header>
       <Content style={{backgroundColor:'rgb(55, 55, 55)'}}>
       <Row>
-        {memes.map((item,key)=>(
+        {memes.length?memes.map((item,key)=>(
           <Col key={key} className='p-2' xs={12} md={12} lg={6} xl={6} xxl={6}>
               <Image alt={item.alt} src={item.url} />
           </Col>
-        ))}
+        )):<Loading />}
       </Row>
       </Content>
     </Layout>

@@ -1,4 +1,4 @@
-import { AlertOutlined, HomeOutlined } from '@ant-design/icons';
+import { AlertOutlined, HomeOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -13,7 +13,7 @@ function MenuComponent() {
         ),
         key: 'home',
         icon: <HomeOutlined />,
-      },{
+    },{
       label: (
         <a href="/random" rel="noopener noreferrer">
           Random
@@ -21,11 +21,19 @@ function MenuComponent() {
       ),
       key: 'random',
       icon: <AlertOutlined />,
-    },
+    },{
+      label: (
+        <a href="/about" rel="noopener noreferrer">
+          About
+        </a>
+      ),
+      key: 'about',
+      icon: <InfoCircleOutlined />,
+    }
   ]
 
   return (
-    <Menu sty theme='dark' mode={'horizontal'} defaultSelectedKeys={['2']} items={items} style={{flex: 1,minWidth: 0,backgroundColor:'rgb(55, 55, 55)'}} />
+    <Menu className='fixed-top' theme='dark' mode={'horizontal'} defaultSelectedKeys={['2']} items={items} style={{flex: 1,minWidth: 0,backgroundColor:'rgb(55, 55, 55)'}} />
   )
 }
 

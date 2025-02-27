@@ -11,7 +11,7 @@ function RandomComponent() {
     return Math.floor(Math.random() * (max - min)) + min;
   }
   function getMemes(){
-    fetch('https://mygo-api.onrender.com/mygo/all_img',{
+    fetch('https://mygo-api.onrender.com/mygo/random_img',{
       method:'GET',
       headers:{
         'Content-Type':'application/json',
@@ -26,14 +26,15 @@ function RandomComponent() {
     getMemes()
   },[])
 
-  if(!memes) return(<Loading />)
   return (
     <Layout>
       <Header style={{backgroundColor:'rgb(55, 55, 55)',margin:0,padding:0}}>
         <MenuComponent />
       </Header>
       <Content className='p-3' style={{backgroundColor:'rgb(55, 55, 55)'}}>
-        <Image alt={memes.alt} src={memes.url} />
+        <div class="image-container" style={{maxHeight:'600px'}}>
+        {memes?<Image style={{height:'100%',width:'auto'}} alt={memes.alt} src={memes.url} />:<Loading />}
+        </div>
       </Content>
     </Layout>
   )

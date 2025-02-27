@@ -34,7 +34,7 @@ function RandomComponent() {
       <Content style={{backgroundColor:'rgb(55, 55, 55)'}}>
         <Row>
           <Col xs={24} md={24}>
-          {memes?<Image style={{height:'100%',width:'auto'}} alt={memes.alt} src={memes.url} />:<Loading />}
+          {memes?<Image alt={memes.alt} src={memes.url} />:<Loading />}
           </Col>
         </Row>
       </Content>

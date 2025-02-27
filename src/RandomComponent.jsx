@@ -31,8 +31,8 @@ function RandomComponent() {
       <Header style={{backgroundColor:'rgb(55, 55, 55)',margin:0,padding:0}}>
         <MenuComponent />
       </Header>
-      <Content className='p-3' style={{backgroundColor:'rgb(55, 55, 55)'}}>
-        <div class="image-container" style={{maxHeight:'600px'}}>
+      <Content style={{backgroundColor:'rgb(55, 55, 55)'}}>
+        <div className="image-container" style={{maxHeight:'600px'}}>
         {memes?<Image style={{height:'100%',width:'auto'}} alt={memes.alt} src={memes.url} />:<Loading />}
         </div>
       </Content>

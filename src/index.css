@@ -6,12 +6,6 @@ body {
   background-color:rgb(55, 55, 55);
 }
 
-#root{
-  display: grid;
-  align-items: center;
-  justify-items: center;
-}
-
 a{
   text-decoration: none;
 }
@@ -19,20 +13,17 @@ a{
 #main{
   width: 100%;
   min-height: 100vh;
-  display: grid;
-  align-items: center;
-  justify-items: center;
+
 }
 
 .image-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* 可根據需求調整 */
 }
 
 .image-container img {
-  max-height: 900px; /* 限制最大高度 */
+  max-height: 600px; /* 限制最大高度 */
   max-width: 100%; /* 讓圖片可以根據視窗縮小 */
   height: auto; /* 保持等比例縮放 */
   width: auto; /* 保持等比例縮放 */

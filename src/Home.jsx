@@ -80,7 +80,7 @@ function Home() {
         onSelect={(e)=>onSelect(e)}
         onClear={onClear}
         open={open}
-        style={{width:'100%'}}
+        style={{width:'100%',zIndex:2}}
       >
         <Input.Search placeholder="輸入關鍵台詞" size={'large'} allowClear enterButton onClear={onClear} loading={loading} />
       </AutoComplete>:null}

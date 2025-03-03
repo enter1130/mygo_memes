@@ -3,8 +3,7 @@ import { AutoComplete, Col, FloatButton, Image, Input, Layout, Row } from 'antd'
 import { useEffect, useState } from 'react';
 import Loading from './Loading';
 import MenuComponent from './MenuComponent';
-
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Content } = Layout;
 
 function Home() {
   const [all, setAll] = useState([])
@@ -87,7 +86,7 @@ function Home() {
       <Row className='mt-3'>
         {memes.length?memes.map((item,key)=>(
           <Col key={key} className='p-2' xs={12} md={12} lg={6} xl={6} xxl={6}>
-              <Image alt={item.alt} src={item.url} />
+              <Image alt={item.alt} src={item.url} style={{ cursor: 'pointer' }} />
           </Col>
         )):<Loading />}
       </Row>

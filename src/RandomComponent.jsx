@@ -32,11 +32,11 @@ function RandomComponent() {
         <MenuComponent />
       </Header>
       <Content style={{backgroundColor:'rgb(55, 55, 55)'}}>
-        <Row>
-          <Col xs={24} md={24}>
-          {memes?<Image alt={memes.alt} src={memes.url} />:<Loading />}
+      {memes?<Row align={'middle'} justify={'center'}>
+          <Col xs={18} md={18}>
+            <Image alt={memes.alt} src={memes.url} />
           </Col>
-        </Row>
+        </Row>:<Loading />}
       </Content>
     </Layout>
   )

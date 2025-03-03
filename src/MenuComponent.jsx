@@ -33,7 +33,7 @@ function MenuComponent() {
   ]
 
   return (
-    <Menu className='fixed-top' theme='dark' mode={'horizontal'} defaultSelectedKeys={['2']} items={items} style={{flex: 1,minWidth: 0,backgroundColor:'rgb(55, 55, 55)',zIndex:'999'}} />
+    <Menu theme='dark' mode={'horizontal'} defaultSelectedKeys={['2']} items={items} style={{flex: 1,minWidth: 0,backgroundColor:'rgb(55, 55, 55)',zIndex:'999'}} />
   )
 }
 

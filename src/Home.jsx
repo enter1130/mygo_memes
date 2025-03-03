@@ -10,6 +10,7 @@ function Home() {
   const [all, setAll] = useState([])
   const [search, setSearch] = useState(null);
   const [memes, setMemes] = useState([])
+  const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   function getMemes(){
     fetch('https://mygo-api.onrender.com/mygo/all_img',{
@@ -29,11 +30,8 @@ function Home() {
     getMemes()
   },[])
 
-  const handleSearch=(e)=>{
-    setSearch(e.target.value);
-  }
-
   const onSearch = (searchText) => {
+    setOpen(true)
     const filteredOptions = all
       .filter(item => item.alt.toLowerCase().includes(searchText.toLowerCase()))
       .map(item => ({
@@ -48,20 +46,20 @@ function Home() {
     setSearch(filteredOptions);
   };
 
-  const onSearchMemes = (searchText) => {
+  const onSelect = (e)=>{
+    setOpen(false)
+    setLoading(true)
     const filteredOptions = all
-      .filter(item => item.alt.toLowerCase().includes(searchText.toLowerCase()))
+      .filter(item => item.alt.toLowerCase().includes(e.toLowerCase()))
       .map(item => ({
-        value: item.alt,
+        alt: item.alt,
         url: item.url,
-        label: (
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            {item.alt}
-          </div>
-        ),
       }));
-    setMemes(filteredOptions);
-  };
+    setTimeout(() => {      
+      setLoading(false)
+      setMemes(filteredOptions);
+    }, 1000);
+  }
 
   const onClear=()=>{
     setMemes(all)
@@ -73,16 +71,18 @@ function Home() {
         <MenuComponent />
       </Header>
       <Content style={{backgroundColor:'rgb(55, 55, 55)'}}>
-      <AutoComplete
+      {memes.length?<AutoComplete
         options={search}
         size="large"
-        className='px-2'
+        className='p-2 sticky-top'
         onSearch={onSearch}
+        onSelect={(e)=>onSelect(e)}
+        open={open}
         style={{width:'100%'}}
       >
-        <Input.Search placeholder="input here" allowClear enterButton onSearch={onSearchMemes} onClear={onClear} />
-      </AutoComplete>
-      <Row>
+        <Input.Search placeholder="輸入關鍵台詞" size={'large'} allowClear enterButton onClear={()=>onClear} loading={loading} />
+      </AutoComplete>:null}
+      <Row className='mt-3'>
         {memes.length?memes.map((item,key)=>(
           <Col key={key} className='p-2' xs={12} md={12} lg={6} xl={6} xxl={6}>
               <Image alt={item.alt} src={item.url} />

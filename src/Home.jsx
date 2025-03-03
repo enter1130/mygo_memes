@@ -1,5 +1,5 @@
 import { UpCircleFilled } from '@ant-design/icons';
-import { Col, FloatButton, Image, Layout, Row } from 'antd';
+import { AutoComplete, Col, FloatButton, Image, Input, Layout, Row } from 'antd';
 import { useEffect, useState } from 'react';
 import Loading from './Loading';
 import MenuComponent from './MenuComponent';
@@ -7,10 +7,10 @@ import MenuComponent from './MenuComponent';
 const { Header, Footer, Sider, Content } = Layout;
 
 function Home() {
+  const [all, setAll] = useState([])
+  const [search, setSearch] = useState(null);
   const [memes, setMemes] = useState([])
-  function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
+  const [open, setOpen] = useState(false);
   function getMemes(){
     fetch('https://mygo-api.onrender.com/mygo/all_img',{
       method:'GET',
@@ -20,6 +20,7 @@ function Home() {
     .then(res=>res.json())
     .then(data=>{
       setMemes(data.urls)
+      setAll(data.urls)
     })
   }
 
@@ -28,6 +29,43 @@ function Home() {
     getMemes()
   },[])
 
+  const handleSearch=(e)=>{
+    setSearch(e.target.value);
+  }
+
+  const onSearch = (searchText) => {
+    const filteredOptions = all
+      .filter(item => item.alt.toLowerCase().includes(searchText.toLowerCase()))
+      .map(item => ({
+        value: item.alt,
+        url: item.url,
+        label: (
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            {item.alt}
+          </div>
+        ),
+      }));
+    setSearch(filteredOptions);
+  };
+
+  const onSearchMemes = (searchText) => {
+    const filteredOptions = all
+      .filter(item => item.alt.toLowerCase().includes(searchText.toLowerCase()))
+      .map(item => ({
+        value: item.alt,
+        url: item.url,
+        label: (
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            {item.alt}
+          </div>
+        ),
+      }));
+    setMemes(filteredOptions);
+  };
+
+  const onClear=()=>{
+    setMemes(all)
+  }
 
   return (
     <Layout>
@@ -35,6 +73,15 @@ function Home() {
         <MenuComponent />
       </Header>
       <Content style={{backgroundColor:'rgb(55, 55, 55)'}}>
+      <AutoComplete
+        options={search}
+        size="large"
+        className='px-2'
+        onSearch={onSearch}
+        style={{width:'100%'}}
+      >
+        <Input.Search placeholder="input here" allowClear enterButton onSearch={onSearchMemes} onClear={onClear} />
+      </AutoComplete>
       <Row>
         {memes.length?memes.map((item,key)=>(
           <Col key={key} className='p-2' xs={12} md={12} lg={6} xl={6} xxl={6}>

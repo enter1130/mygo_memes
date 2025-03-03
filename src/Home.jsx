@@ -63,6 +63,7 @@ function Home() {
 
   const onClear=()=>{
     setMemes(all)
+    setOpen(false)
   }
 
   return (
@@ -77,10 +78,11 @@ function Home() {
         className='p-2 sticky-top'
         onSearch={onSearch}
         onSelect={(e)=>onSelect(e)}
+        onClear={onClear}
         open={open}
         style={{width:'100%'}}
       >
-        <Input.Search placeholder="輸入關鍵台詞" size={'large'} allowClear enterButton onClear={()=>onClear} loading={loading} />
+        <Input.Search placeholder="輸入關鍵台詞" size={'large'} allowClear enterButton onClear={onClear} loading={loading} />
       </AutoComplete>:null}
       <Row className='mt-3'>
         {memes.length?memes.map((item,key)=>(

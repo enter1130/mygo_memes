@@ -12,7 +12,6 @@ function AboutComponent() {
       </Header>
       <Content className='p-3 d-flex justify-content-center align-items-center' style={{backgroundColor:'rgb(55, 55, 55)'}}>
         <Card cover={<img style={{maxHeight:'400px'}} src='https://drive.miyago9267.com/d/file/img/mygo/我愛慕虛榮啦.jpg' />}>
-
         <Typography>
           <Title level={3}>關於我們</Title>
           <ul>
